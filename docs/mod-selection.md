@@ -8,29 +8,38 @@
 - **Deferred:** Intentionally postponed until the foundation works.
 - **Rejected:** Tested or reviewed and excluded, with a recorded reason.
 
-Nothing below should be treated as a final version lock.
+Nothing below should be treated as a final version lock unless it appears in the manifest with a passing test result.
 
 ## Core pillars
 
 | Mod | Status | Intended responsibility |
 |---|---|---|
-| Mekanism | Core | Advanced ore processing, chemical systems, factories, materials, and utilities |
-| Immersive Engineering | Core | Coke/steel, heavy fabrication, multiblocks, visible infrastructure, and material handling |
+| Mekanism 10.7.19.85 | Candidate core baseline | Advanced ore processing, chemical systems, factories, materials, and utilities |
+| Immersive Engineering 12.4.2-194 | Candidate core baseline | Coke/steel, heavy fabrication, multiblocks, visible infrastructure, and material handling |
 
-Exact NeoForge 1.21.1 files, dependencies, and server compatibility must be verified before creating the locked manifest.
+See `pack/manifest/core-baseline.md` for exact filenames and release references.
 
 ## Support categories to evaluate
 
 | Category | Candidate direction | Acceptance criteria |
 |---|---|---|
-| Quests | FTB Quests ecosystem | Correct 1.21.1 NeoForge builds; stable item/recipe objectives; multiplayer sync |
-| Scripting | KubeJS and required integrations | Exact loader support; recipe coverage for both pillars; server-side correctness |
-| IE expansion | Immersive Petroleum or other IE addons | Adds useful industrial roles without bloating progression |
-| Mekanism expansion | Official/compatible Mekanism addons | Correct version and dependency chain; no duplicate or obsolete progression |
+| Quests | FTB Quests ecosystem | Correct 1.21.1 NeoForge builds; all required libraries identified; multiplayer sync tested |
+| Custom content | Dedicated `meridian` NeoForge mod | Stable registry IDs, server-authoritative behavior, save/reload and dedicated-server tests |
+| Data changes | Vanilla datapacks | Use only for features datapacks can actually express |
+| IE expansion | Immersive Petroleum or other IE addons | Exact 1.21.1 NeoForge release; adds a useful industrial role without bloating progression |
+| Mekanism expansion | Official/compatible Mekanism addons | Exact version and dependency chain; no duplicate or obsolete progression |
 | Storage | AE2 or a lighter alternative | Optional convenience; must not erase logistics gameplay or exceed performance budget |
-| Logistics | Conveyors, pipes, transport, or train systems | Must solve a defined transport problem and be maintainable |
+| Logistics | Existing IE/Mekanism transport first | Add another transport mod only when a demonstrated gap exists |
 | Exploration | Structures or destination content | Supplies discoveries and a coherent frontier loop; server-safe |
 | Performance | Minimal compatible optimization set | Tested together; no speculative stacking of overlapping mods |
+
+## Scripting policy
+
+MERIDIAN will **not** use KubeJS or CraftTweaker. Prefer:
+1. Vanilla datapacks for recipes, tags, loot, advancements, and other supported data-driven changes.
+2. A dedicated `meridian` NeoForge mod for custom registered items, blocks, interactions, persistent state, networking, and mechanics that datapacks cannot provide.
+
+Do not add a scripting framework simply because it is a common modpack convention.
 
 ## Selection rules
 
@@ -40,7 +49,7 @@ Exact NeoForge 1.21.1 files, dependencies, and server compatibility must be veri
 4. Read release notes and known issues for the exact file.
 5. Test a clean client launch, new world, save/reload, and dedicated-server join.
 6. Add one logical group at a time and retain a known-good baseline.
-7. Record the exact filename, version, source, dependency, and test result in the eventual manifest.
+7. Record exact filename, version, source, side, dependencies, and test result in the manifest.
 8. Do not include experimental addons in the critical path until they pass the same tests.
 
 ## Performance policy

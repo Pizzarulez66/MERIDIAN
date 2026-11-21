@@ -1,41 +1,36 @@
 # Development Roadmap
 
-## Milestone 0 — Design and technical foundation
-**Goal:** Turn the concept into a testable project baseline.
+## Milestone 0 — Core baseline
+**Goal:** Establish a minimal, reproducible 1.21.1 NeoForge installation.
 
-Tasks:
-- [ ] Confirm Minecraft 1.21.1 NeoForge as target.
-- [ ] Verify exact Mekanism and Immersive Engineering builds and dependencies.
-- [ ] Create a clean minimal client instance.
-- [ ] Create a clean dedicated server instance.
-- [ ] Select the quest system.
-- [ ] Evaluate a scripting route and document its limits.
-- [ ] Establish a locked mod manifest and known-good backup.
-- [ ] Measure idle and active memory/performance.
-- [ ] Confirm the Core component identities and campaign acts.
+- [ ] Pin exact NeoForge build.
+- [ ] Install only Mekanism and Immersive Engineering plus mandatory dependencies.
+- [ ] Clean client boot and world save/reload.
+- [ ] Dedicated-server boot and client join.
+- [ ] Record memory and startup behavior.
 
-**Exit criteria:** Clean client and server boot, world creation, save/reload, and multiplayer join all work with the core mods.
+**Exit criteria:** Core client and dedicated server work reliably.
 
 ## Milestone 1 — Industrial vertical slice
 **Goal:** Prove that the two core mods form a meaningful progression loop.
 
-Tasks:
-- [ ] Implement one early IE-focused chain.
-- [ ] Implement one Mekanism-focused chain.
-- [ ] Implement at least two cross-mod chains.
-- [ ] Verify automation and logistics for each.
-- [ ] Test recipe visibility and quest tracking.
-- [ ] Measure plausible production time and power cost.
-- [ ] Confirm no unintended recipe bypass.
+- [ ] IE Coke Oven → Coal Coke and Creosote Oil.
+- [ ] IE Blast Furnace → Steel.
+- [ ] IE steel supplies Mekanism Steel Casing progression.
+- [ ] Mekanism Enrichment Chamber and Metallurgic Infuser production.
+- [ ] Implement `meridian:field_regulator` in the dedicated mod.
+- [ ] Test IE and Mekanism energy transfer separately from item/fluid logistics.
+- [ ] Verify recipe visibility and quest tracking once a quest stack is selected.
+- [ ] Measure production time, power use, memory, and tick behavior.
 
-**Exit criteria:** A player can progress from basic resources to a small automated industrial setup with both pillars contributing.
+**Exit criteria:** A player can progress from basic resources to a small automated industrial setup with both pillars contributing and craft the first MERIDIAN-specific integration item.
 
 ## Milestone 2 — Campaign and progression
 **Goal:** Build the full Overworld campaign.
 
-Tasks:
+- [ ] Select and validate quest stack.
 - [ ] Implement Acts I–IV.
-- [ ] Build the four district chapters.
+- [ ] Build the four industrial district chapters.
 - [ ] Add contracts, diagrams, and clear sourcing hints.
 - [ ] Implement sustainable supply routes for bulk materials.
 - [ ] Add the five Meridian component chapters.
@@ -46,7 +41,6 @@ Tasks:
 ## Milestone 3 — Meridian Core and Gate prototype
 **Goal:** Make the endgame mechanically real.
 
-Tasks:
 - [ ] Implement five component items.
 - [ ] Implement the Meridian Core recipe and quest chapter.
 - [ ] Prototype Gate controller/activation.
@@ -59,19 +53,17 @@ Tasks:
 ## Milestone 4 — Frontier and post-game
 **Goal:** Give the destination meaningful reasons to explore and build.
 
-Tasks:
 - [ ] Design frontier resources and their uses.
 - [ ] Add structures and recoverable technology.
 - [ ] Add outpost and logistics objectives.
 - [ ] Add optional second-generation engineering projects.
-- [ ] Ensure the main campaign is already complete before post-game quotas.
+- [ ] Ensure the main campaign is complete before post-game quotas.
 
 **Exit criteria:** The destination supports a distinct optional gameplay loop without destabilizing the main campaign.
 
 ## Milestone 5 — Release hardening
 **Goal:** Deliver a reproducible, multiplayer-ready pack.
 
-Tasks:
 - [ ] Full client and dedicated-server regression tests.
 - [ ] Fresh world and existing save tests.
 - [ ] Quest sync and progression persistence tests.
