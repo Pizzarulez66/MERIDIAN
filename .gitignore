@@ -1,0 +1,12 @@
+# Local runtime and generated output
+.minecraft/
+run/
+logs/
+crash-reports/
+mods/
+resourcepacks/
+saves/
+server/
+*.log
+*.jar
+*.zip
