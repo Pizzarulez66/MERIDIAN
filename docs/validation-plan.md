@@ -1,52 +1,63 @@
-# Validation plan
+# Validation Plan
 
-Do not progress-lock recipes until the following tests pass on the exact frozen mod list.
+A feature is not complete because it appears in a quest description or works once in a developer world. It must be reproducible.
 
-## M1 — Clean platform boot
+## Platform and boot
+- [ ] Exact Minecraft 1.21.1 and NeoForge build recorded.
+- [ ] Exact Java runtime requirement recorded.
+- [ ] Clean client launches without errors.
+- [ ] Clean dedicated server starts without errors.
+- [ ] New world generates and can be entered.
+- [ ] World saves, exits, and reloads.
+- [ ] Two clients can join and play together.
+- [ ] No missing or mismatched registry entries.
 
-- [ ] Install the exact Minecraft 1.21.1 + NeoForge 21.1.x + Java 21 combination.
-- [ ] Launch a clean client with the core mods and scripting stack.
-- [ ] Launch a clean dedicated server with the same gameplay mods.
-- [ ] Join the dedicated server from the client and create a new world.
-- [ ] Capture `latest.log`, mod list, and server log for the baseline.
+## Core mod integration
+- [ ] Mekanism machines place, configure, process, and persist correctly.
+- [ ] Immersive Engineering multiblocks form and persist correctly.
+- [ ] Power transfer works as documented.
+- [ ] Item, fluid, and gas transfer works for intended routes.
+- [ ] Recipe changes are visible in the selected recipe viewer.
+- [ ] No duplicate, dead-end, or bypass recipes.
+- [ ] Cross-mod chains work on a dedicated server.
 
-## M2 — Energy interoperability
+## Progression and quests
+- [ ] Each milestone has clear prerequisites.
+- [ ] Item submission objectives count correctly.
+- [ ] Recipe objectives trigger correctly.
+- [ ] Unlocks synchronize to all players as intended.
+- [ ] Quest progress persists after restart.
+- [ ] Optional objectives are clearly marked.
+- [ ] Player-certified construction checks are described honestly.
+- [ ] No arbitrary machine-inspection or throughput claims.
 
-- [ ] IE generator → IE connector/relay/wire → Mekanism Universal Cable → Mekanism machine.
-- [ ] Mekanism generator/cable → supported IE input/connector route → IE machine.
-- [ ] Test direct adjacency separately from wire-network transfer.
-- [ ] Record transfer rate, any losses, and any sided/connector restrictions.
-- [ ] Verify behavior on dedicated server, not only an integrated world.
+## Meridian Core and Gate
+- [ ] Each of the five component families has a discoverable production path.
+- [ ] Bulk materials have sustainable supply routes.
+- [ ] Rare exploration rewards have bounded/understandable sources.
+- [ ] Core crafting cannot be accidentally bypassed.
+- [ ] Gate construction requirements are clear.
+- [ ] Activation is server-authoritative.
+- [ ] Gate state persists after restart.
+- [ ] Multiple players can use the Gate correctly.
+- [ ] Failed activation does not consume critical items without clear feedback.
+- [ ] Destination arrival and return path are tested.
 
-## M3 — Item and machine interoperability
+## Performance
+- [ ] Startup time recorded.
+- [ ] Idle memory recorded.
+- [ ] Memory during representative factory operation recorded.
+- [ ] Chunk/worldgen performance checked.
+- [ ] Large IE multiblocks and Mekanism factories tested together.
+- [ ] Client rendering and server tick performance checked separately.
+- [ ] No overlapping optimization mods without measured benefit.
+- [ ] Target allocation remains practical on an 8 GB system.
 
-- [ ] IE Excavator output can be buffered and fed into the intended Mekanism processing stage.
-- [ ] Mekanism processing outputs can be routed into the selected IE machine.
-- [ ] Verify all item IDs, recipe types, tags, byproducts, and recipe-viewer visibility.
-- [ ] Confirm that there is no duplicate/looping recipe or easy bypass of the intended tier.
-- [ ] Test recipe outputs after restart and on a dedicated server.
+## Release gate
 
-## M4 — Scripting and questing
-
-- [ ] KubeJS and Rhino load on client and server without script exceptions.
-- [ ] KubeJS Mekanism loads against the selected Mekanism version.
-- [ ] Immersive Engineering JS loads on NeoForge 1.21.1 if selected; if not, use IE native data recipes with validated JSON schemas.
-- [ ] One test recipe is added to a Mekanism machine and one to an IE machine.
-- [ ] FTB Quests, FTB Library, FTB Teams, and Architectury API load on both sides.
-- [ ] A test quest correctly detects one item task and one manual/self-audit task.
-
-## M5 — Balance and performance
-
-- [ ] Measure baseline idle and factory-active memory/CPU.
-- [ ] Test a small factory, then a representative full district, then all four districts chunk-loaded.
-- [ ] Check chunk loading, item entity counts, transporter/conveyor pathing, and energy-network performance.
-- [ ] Review all ore multiplication paths and byproduct loops.
-- [ ] Tune machine time, energy, chemical costs, excavator yield, and fuel supply only after measuring.
-
-## M6 — Release candidate
-
-- [ ] Export a launcher manifest with exact file IDs/versions.
-- [ ] Verify a fresh client install from the export.
-- [ ] Verify a fresh dedicated server from the same manifest.
-- [ ] Confirm client/server mod parity and no missing configs/scripts/quest data.
-- [ ] Publish known issues, exact loader version, Java version, and checksum of the release archive.
+A release candidate must:
+1. Pass all critical boot, save, server, progression, and Gate tests.
+2. Have a complete version-locked mod manifest.
+3. Include reproducible installation instructions.
+4. Document known issues and deferred features.
+5. Be tested from a clean install, not only a long-lived development instance.

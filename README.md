@@ -1,71 +1,80 @@
-# MERIDIAN: The Industrial Grid
+# MERIDIAN — The Industrial Frontier
 
-A technology-focused Minecraft modpack project built around **Mekanism** and **Immersive Engineering**. The design goal is not to add every popular tech mod; it is to make extraction, chemical processing, heavy fabrication, power generation, and logistics form one industrial system.
+> A long-form Minecraft technology campaign built around **Mekanism × Immersive Engineering**.
 
-> **Project status: 0.1.0 — design and compatibility scaffold.** This is not yet a playable modpack release. The version target and candidate mod set have been researched, but recipe rebalance, quest data, and client/server smoke tests still need to be completed in-game.
+**Status:** Foundation / pre-production  
+**Target:** Minecraft 1.21.1 · NeoForge  
+**Core identity:** Industrial engineering, sustainable automation, exploration, and a world-scale megaproject.
 
-## Target platform
+MERIDIAN is about building an industrial civilization capable of restoring a dormant gateway to an unexplored frontier. The player's ultimate trophy is the **Meridian Core**, a multi-stage artifact assembled from five major industrial achievements. The Core is then used to construct and commission the **Meridian Gate**.
 
-- Minecraft: **1.21.1**
-- Loader: **NeoForge 21.1.x** (baseline candidate: 21.1.267)
-- Java: **21 or newer**
-- Primary mods: **Mekanism** and **Immersive Engineering**
+This is not intended to be a recipe grind for its own sake. The long-term grind should reward factory expansion, better logistics, reliable supply chains, and increasingly sophisticated engineering.
 
-NeoForge 1.21.1 was selected because both pillars have maintained 1.21.1 NeoForge releases, and the scripting and questing tools needed for custom progression also have 1.21.1 NeoForge builds.
+## The experience in one sentence
 
-## Design in one sentence
+**Build the industry. Manufacture the impossible. Reopen the frontier.**
 
-**Mekanism is the chemical and precision-processing backbone; Immersive Engineering is the extraction, foundry, fabrication, and physical infrastructure backbone.** The player must build an industrial network that depends on both.
+## Non-negotiable design pillars
 
-## The endgame: Project MERIDIAN
+1. **Mekanism and Immersive Engineering stay relevant.** Both must contribute meaningful production steps throughout the campaign; neither is merely an early-game stepping stone.
+2. **Automation is the intended answer to scale.** Large requirements should encourage players to improve production rather than manually collect absurd quantities.
+3. **Fair difficulty.** Every major cost needs a clear purpose, a discoverable recipe path, and a sustainable supply route.
+4. **A real finale.** Crafting the Meridian Core is a major milestone, not the entire ending. Gate construction, commissioning, and the first frontier expedition complete the main arc.
+5. **Optional post-game depth.** Ambitious players can expand the frontier, establish inter-world logistics, and pursue second-generation projects without being forced to do so to finish the campaign.
+6. **Lean, stable implementation.** Add mods only when they solve a defined design problem. Verify exact versions, dependencies, server behavior, and performance before locking them.
 
-The long-term objective is to commission a regional-scale industrial grid, not simply craft the strongest machine. The project has four interdependent districts:
+## Main campaign
 
-1. **Resource Basin** — Immersive Engineering mineral extraction and bulk handling feed ore into Mekanism processing lines.
-2. **Chemical Works** — Mekanism separates, purifies, and upgrades materials and chemicals; its products become feedstock for IE alloying and fabrication.
-3. **Power Spine** — an IE high-voltage distribution network links industrial sites, backed by a Mekanism Induction Matrix and a resilient IE fuel generator for black-start capability.
-4. **Central Foundry** — IE metal presses, arc furnaces, and assemblers combine with Mekanism factories and advanced chemical products to produce the final Grid Synchronizer.
+| Act | Name | Player achievement |
+|---|---|---|
+| I | Survey the Frontier | Establish a foothold, investigate the dormant Gate, and identify local resources. |
+| II | Found the Works | Build the first extraction, coke/steel, power, and processing facilities. |
+| III | Industrial Expansion | Develop advanced ore processing, chemical production, fabrication, and logistics. |
+| IV | The Grid | Connect specialized industrial districts with dependable generation, storage, and distribution. |
+| V | The Meridian Project | Manufacture the five Core components and assemble the Gate subsystems. |
+| VI | Commissioning | Complete the activation sequence and open the Gate. |
+| VII | Beyond the Gate | Explore the frontier and pursue optional expansion projects. |
 
-The questbook will combine automatic item/progression tasks with player-certified engineering checklists for physical builds. A quest mod cannot reliably prove that a player has built a properly routed power grid or a functioning factory layout without custom validation code, so the book will not pretend to automatically inspect those structures.
+## The Meridian Core
 
-See [`docs/progression-and-endgame.md`](docs/progression-and-endgame.md) for the full campaign plan.
+The Core is the campaign's equivalent of a pack-defining trophy item. Its five component families are currently:
 
-## Repository layout
+- **Industrial Heart** — heavy fabrication, structural materials, and machinery.
+- **Chemical Matrix** — advanced chemical synthesis and material transformation.
+- **Power Singularity** — generation, storage, conversion, and distribution.
+- **Control Lattice** — precision assemblies, automation, and logistics.
+- **Astral Keystone** — exploration, rare finds, and recovered technology.
 
-```text
-.
-├── README.md
-├── PROJECT_STATUS.md
-├── docs/
-│   ├── compatibility-matrix.md
-│   ├── industrial-integration.md
-│   ├── progression-and-endgame.md
-│   └── validation-plan.md
-├── modlist/
-│   └── candidate-mod-list.md
-├── kubejs/
-│   └── server_scripts/
-│       ├── README.md
-│       └── 00_pack_baseline.js
-└── quests/
-    └── README.md
-```
+These are design roles, not locked recipes. Ingredient lists, quantities, and exact mod dependencies must follow compatibility research and production-chain prototypes.
 
-## What is intentionally not included yet
+## Technical baseline
 
-- No mod JARs are redistributed here.
-- No untested recipes are injected into either mod's machine registry.
-- No fabricated FTB Quests JSON is shipped as a fake-functional questbook.
-- No generated server configs are committed before a clean first launch, because those configs should be produced by the exact tested mod versions.
+- Minecraft **1.21.1**
+- **NeoForge**; exact build to be pinned after validating the selected mod set.
+- Core content pillars: **Mekanism** and **Immersive Engineering**.
+- Script engine, quest stack, addons, optional storage/transport mods, and destination dimension remain provisional until tested.
 
-## Development workflow
+## Repository map
 
-1. Build a minimal client and dedicated-server instance from `modlist/candidate-mod-list.md`.
-2. Complete the smoke tests in `docs/validation-plan.md` before adding progression locks.
-3. Add cross-mod recipes in small, named KubeJS files; test each recipe in JEI/EMI and in its target machine.
-4. Build the FTB Quests chapters from `docs/progression-and-endgame.md` only after recipe IDs and unlock conditions are confirmed.
-5. Export a launcher pack only after client/server parity, world creation, and a clean dedicated-server join have been verified.
+- [`docs/vision.md`](docs/vision.md) — experience, design principles, and scope.
+- [`docs/campaign-and-endgame.md`](docs/campaign-and-endgame.md) — campaign acts, Core components, Gate, and post-game.
+- [`docs/industrial-systems.md`](docs/industrial-systems.md) — cross-mod production philosophy and district model.
+- [`docs/mod-selection.md`](docs/mod-selection.md) — compatibility policy and candidate categories.
+- [`docs/technical-architecture.md`](docs/technical-architecture.md) — pack structure, scripts, custom content, and implementation boundaries.
+- [`docs/roadmap.md`](docs/roadmap.md) — milestones and acceptance criteria.
+- [`docs/validation-plan.md`](docs/validation-plan.md) — boot, gameplay, server, balance, and performance tests.
+- [`docs/decisions.md`](docs/decisions.md) — decisions made and questions intentionally left open.
+- [`development/README.md`](development/README.md) — contributor workflow and definition of done.
 
-## License and mod attribution
+## Current milestone: Foundation
 
-This repository contains original pack design, documentation, and configuration/scripts authored for this project. Individual mods retain their own licenses and distribution rules. Download mods from their official project pages; do not mirror their JARs here.
+The immediate goal is not to invent final recipes. It is to:
+
+1. Verify exact 1.21.1 NeoForge builds for Mekanism and Immersive Engineering.
+2. Establish a minimal bootable client and dedicated server.
+3. Select a small, compatible quest and scripting stack.
+4. Prototype one genuine IE → Mekanism production chain and one reverse/integrated chain.
+5. Measure memory and startup behavior on modest hardware.
+6. Only then begin the full progression and balance pass.
+
+**Important:** Quest checklists may ask players to certify a build, but must not claim to inspect arbitrary multiblocks, measure throughput, or verify a live power network unless a tested detector or custom implementation actually does so.
