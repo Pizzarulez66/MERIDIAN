@@ -1,8 +1,7 @@
-# MERIDIAN 0.2.0 — Performance, QoL & Diagnostics
+# MERIDIAN — Phase 1: The Industrial Bridge
 
-This is the development specification for the combined 0.1.1–0.1.3 update, built on the verified MERIDIAN 0.1.0 Founder's Build.
+This is the design and implementation starter for the first progression slice beyond the working 0.2.0 baseline.
 
-**Platform baseline:** Minecraft 1.21.1 · NeoForge 21.1.249 · Java 21  
-**Design rule:** stability and useful diagnostics come before maximum mod count.
+**Goal:** establish an intentional material and fabrication pipeline in which Immersive Engineering and Mekanism have distinct, complementary roles.
 
-This package is a development/documentation bundle, not yet an installable modpack export. Mod versions and dependencies must be pinned and tested before the release manifest is generated.
+This is a development artifact, not a gameplay datapack or mod jar. Recipe IDs, ingredients, tags, and recipe serializers must be verified against the installed jar files before implementation.

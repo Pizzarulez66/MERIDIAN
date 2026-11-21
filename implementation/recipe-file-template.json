@@ -1,0 +1,13 @@
+{
+  "comment": "Template only. Replace with a verified recipe serializer and verified ingredients before use.",
+  "type": "REPLACE_WITH_VERIFIED_RECIPE_TYPE",
+  "ingredients": [
+    {
+      "item": "REPLACE_WITH_VERIFIED_ITEM_ID"
+    }
+  ],
+  "result": {
+    "id": "meridian:field_regulator",
+    "count": 1
+  }
+}
